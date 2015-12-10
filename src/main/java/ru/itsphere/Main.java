@@ -2,12 +2,8 @@ package ru.itsphere;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.itsphere.domain.Purse;
-import ru.itsphere.domain.User;
 import ru.itsphere.service.PurseService;
 import ru.itsphere.service.UserService;
-
-import java.util.List;
 
 /**
  * http://it-channel.ru/
