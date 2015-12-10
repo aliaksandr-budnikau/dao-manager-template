@@ -1,0 +1,25 @@
+/**
+ * Скрипт сборки проекта
+ *
+ * http://it-channel.ru/
+ *
+ * @author Budnikov Aleksandr
+ */
+apply plugin: 'idea'
+apply plugin: 'java'
+
+version = '1.0'
+compileJava.options.encoding = 'UTF-8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    def version = '4.2.3.RELEASE'
+    compile "org.springframework:spring-context:${version}"
+    compile "org.springframework:spring-jdbc:${version}"
+
+    // Подключаем БД H2
+    compile 'com.h2database:h2:1.4.187'
+}

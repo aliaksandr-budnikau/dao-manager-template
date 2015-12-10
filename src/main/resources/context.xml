@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Контекст приложения
+
+    http://it-channel.ru/
+
+    @author Budnikov Aleksandr
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/jdbc
+       http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+       ">
+
+    <bean id="userService" class="ru.itsphere.service.UserServiceImpl">
+        <property name="daoManagerFactory" ref="daoManagerFactory"/>
+    </bean>
+
+    <bean id="purseService" class="ru.itsphere.service.PurseServiceImpl">
+        <property name="daoManagerFactory" ref="daoManagerFactory"/>
+    </bean>
+
+    <bean id="daoManagerFactory" class="ru.itsphere.dao.DAOManagerFactoryImpl">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <jdbc:embedded-database id="dataSource" type="H2">
+        <jdbc:script location="file:dbscripts/001_create_users_table.sql"/>
+        <jdbc:script location="file:dbscripts/002_create_purses_table.sql"/>
+        <jdbc:script location="file:dbscripts/data_for_users_table.sql"/>
+        <jdbc:script location="file:dbscripts/data_for_purses_table.sql"/>
+    </jdbc:embedded-database>
+</beans>
